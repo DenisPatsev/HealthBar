@@ -1,21 +1,22 @@
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private Slider _bar;
+    [SerializeField] private UnityEvent _healthChange;
+    [SerializeField] private float _currentHealth;
 
-    private float _currentHealth;
-    private float _changeStep;
     private float _startHealth;
+    private float _changeStep;
     private float _maximalHealth;
+
+    public float CurrentHealth => _currentHealth;
+    public float StartHealth => _startHealth;
 
     private void Start()
     {
         _maximalHealth = 100;
-        _currentHealth = 50;
         _startHealth = _currentHealth;
-        _bar.value = _currentHealth;
         _changeStep = 10;
     }
 
@@ -24,17 +25,17 @@ public class Player : MonoBehaviour
         if (_currentHealth > 0)
         {
             _currentHealth -= _changeStep;
-            _bar.value = Mathf.MoveTowards(_startHealth, _currentHealth, Time.time);
+            _healthChange.Invoke();
             _startHealth = _currentHealth;
         }
     }
 
-    public void GetHealth()
+    public void GetTreated()
     {
         if (_currentHealth < _maximalHealth)
         {
             _currentHealth += _changeStep;
-            _bar.value = Mathf.MoveTowards(_startHealth, _currentHealth, Time.time);
+            _healthChange.Invoke();
             _startHealth = _currentHealth;
         }
     }

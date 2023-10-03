@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571385, b: 0.30692253, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,7 +287,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2144563234}
         m_TargetAssemblyTypeName: Player, Assembly-CSharp
-        m_MethodName: GetHealth
+        m_MethodName: GetTreated
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1417,6 +1417,7 @@ GameObject:
   - component: {fileID: 2144563231}
   - component: {fileID: 2144563230}
   - component: {fileID: 2144563234}
+  - component: {fileID: 2144563235}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1514,4 +1515,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c35007c839a9bc4a943b3179d250901, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _healthChange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2144563235}
+        m_TargetAssemblyTypeName: BarDrawer, Assembly-CSharp
+        m_MethodName: ChangeBarValue
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _currentHealth: 50
+--- !u!114 &2144563235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144563229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad4e81a3dbf0844db295a568988f18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _bar: {fileID: 1178158647}
+  _player: {fileID: 2144563234}
